@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { CldImage } from "next-cloudinary";
 import { Card, Box, Inset, Text, Flex, Grid } from "@radix-ui/themes";
 import axios from "axios";
+import BookButton from "../BookButton";
 
 interface Property {
   id: string;
@@ -49,6 +50,7 @@ const PropertiesPage = () => {
                 {property.currency} {property.price}
               </Text>
             </Flex>
+            <BookButton />
           </Card>
         </Box>
       ))}

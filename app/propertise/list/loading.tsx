@@ -3,6 +3,7 @@ import { CldImage } from "next-cloudinary";
 import React from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import BookButton from "../BookButton";
 
 const LoadingPropertiesPage = () => {
   const properties = [1, 2, 3, 4, 5];
@@ -38,6 +39,7 @@ const LoadingPropertiesPage = () => {
                 <Skeleton /> <Skeleton />
               </Text>
             </Flex>
+            <BookButton />
           </Card>
         </Box>
       ))}
