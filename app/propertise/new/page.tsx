@@ -63,14 +63,14 @@ const NewPropertyPage = () => {
   });
 
   return (
-    <>
+    <div className="max-w-xl">
       {error && (
         <Callout.Root color="red" mb="4">
           <Callout.Text>{error}</Callout.Text>
         </Callout.Root>
       )}
 
-      <form className="max-w-xl space-y-3" onSubmit={onSubmit}>
+      <form className=" space-y-3" onSubmit={onSubmit}>
         <ErrorMessage>{errors.title?.message}</ErrorMessage>
         <TextField.Root placeholder="Title" {...register("title")} />
 
@@ -142,7 +142,6 @@ const NewPropertyPage = () => {
                 </div>
               ))}
             </div>
-
             {/* Mobile horizontal scroll */}
             <div className="md:hidden mt-2">
               <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory scroll-smooth p-2">
@@ -154,7 +153,7 @@ const NewPropertyPage = () => {
                     <CldImage
                       src={id}
                       alt="property image"
-                      width={400}
+                      width={200}
                       height={200}
                       className="object-cover w-full h-full"
                     />
@@ -225,7 +224,7 @@ const NewPropertyPage = () => {
           </Button>
         </Flex>
       </form>
-    </>
+    </div>
   );
 };
 

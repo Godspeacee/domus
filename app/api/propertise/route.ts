@@ -28,7 +28,7 @@ export async function POST(request:NextRequest){
             area:body.area,
             state:body.state,
             agent: {
-          connect: { id: Number(session.user.id ) }
+          connect: { id:(session.user.id ) }
            }
         },
          include: {
@@ -45,4 +45,11 @@ export async function POST(request:NextRequest){
     }
  
     
+}
+
+export async function GET() {
+  const properties = await prisma.property.findMany({
+    include: { images: true },
+  });
+  return NextResponse.json(properties);
 }
