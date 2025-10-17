@@ -34,7 +34,7 @@ const NavBar = () => {
 
 const NavLinks = () => {
   const links = [
-    { label: "Properties", href: "/propertise", key: "propertise" },
+    { label: "Properties", href: "/propertise/list", key: "propertise" },
   ];
 
   return (
