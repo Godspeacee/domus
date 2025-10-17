@@ -1,8 +1,7 @@
-import { Grid, Box, Card, Inset, Flex, Text } from "@radix-ui/themes";
+import { Grid, Box, Card, Inset, Flex, Text, Skeleton } from "@radix-ui/themes";
 import { CldImage } from "next-cloudinary";
 import React from "react";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
+
 import BookButton from "../BookButton";
 
 const LoadingPropertiesPage = () => {
@@ -13,31 +12,35 @@ const LoadingPropertiesPage = () => {
         <Box maxWidth={"240px"} key={property}>
           {" "}
           <Card size={"2"}>
-            <Inset clip={"padding-box"} side={"top"}>
-              <CldImage
-                src={property.toString()}
-                alt={property.toString()}
-                width={400}
-                height={300}
-                crop="fill"
-                className="object-cover w-full h-[140px]"
-              />
-            </Inset>
+            <Skeleton>
+              <Inset clip={"padding-box"} side={"top"}>
+                <CldImage
+                  src={property.toString()}
+                  alt={property.toString()}
+                  width={400}
+                  height={300}
+                  crop="fill"
+                  className="object-cover w-full h-[140px]"
+                />
+              </Inset>
+            </Skeleton>
 
             <Flex direction={"column"}>
-              <Text size="3" weight="bold">
-                <Skeleton />
-              </Text>
-              <Text>
-                <Skeleton />
-              </Text>
-              <Text>
-                <Skeleton />
-              </Text>
-              <Text>
-                {" "}
-                <Skeleton /> <Skeleton />
-              </Text>
+              <Skeleton>
+                <Text size="3" weight="bold">
+                  {property.toString()}
+                </Text>
+              </Skeleton>
+              <Skeleton>
+                <Text>{property}</Text>
+                <Text>{property}</Text>
+              </Skeleton>
+              <Skeleton>
+                <Text>
+                  {" "}
+                  {property} {property}
+                </Text>
+              </Skeleton>
             </Flex>
             <BookButton />
           </Card>
