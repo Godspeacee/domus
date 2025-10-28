@@ -4,8 +4,9 @@ import { CldImage } from "next-cloudinary";
 import { Card, Box, Inset, Text, Flex, Grid } from "@radix-ui/themes";
 import axios from "axios";
 import BookButton from "../BookButton";
+import Link from "@/app/component/Link";
 
-interface Property {
+export interface Property {
   id: string;
   title: string;
   description: string;
@@ -14,6 +15,9 @@ interface Property {
   state: string;
   category: string;
   images: { url: string }[];
+  area: string;
+  address: string;
+  createdAt: string;
 }
 
 const PropertiesPage = () => {
@@ -41,7 +45,10 @@ const PropertiesPage = () => {
 
             <Flex direction={"column"}>
               <Text size="3" weight="bold">
-                {property.title}
+                <Link href={`/propertise/${property.id}`}>
+                  {" "}
+                  {property.title}
+                </Link>
               </Text>
               <Text>{property.state}</Text>
               <Text>{property.category}</Text>
