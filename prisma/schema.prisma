@@ -32,17 +32,18 @@ model Property {
   images      Image[]
   agent       User             @relation(fields: [agentId], references: [id])
   bookings    Booking[]
+  payments    Payment[]
 }
 
 model Booking {
-  id         String   @id @default(cuid())
-  amount     Int
-  status     String   @default("PENDING")
-  txRef      String?
-  property   Property @relation(fields: [propertyId], references: [id])
-  propertyId String
-  user       User     @relation(fields: [userId], references: [id])
-  userId     String
+  id            String   @id @default(cuid())
+  propertyId    String
+  customerEmail String
+  amount        Float
+  status        String
+  createdAt     DateTime @default(now())
+
+  property Property @relation(fields: [propertyId], references: [id])
 }
 
 model User {
@@ -58,9 +59,19 @@ model User {
   sessions      Session[]
   properties    Property[]
   wallet        Wallet?
-  bookings      Booking[]
 
   @@map("users")
+}
+
+model Payment {
+  id         String   @id @default(cuid())
+  reference  String   @unique
+  amount     Float
+  email      String
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id])
+  status     String
+  createdAt  DateTime @default(now())
 }
 
 model Account {

@@ -57,7 +57,7 @@ const PropertiesPage = () => {
                 {property.currency} {property.price}
               </Text>
             </Flex>
-            <BookButton />
+            <BookButton property={property} />
           </Card>
         </Box>
       ))}
