@@ -31,6 +31,18 @@ model Property {
   state       String
   images      Image[]
   agent       User             @relation(fields: [agentId], references: [id])
+  bookings    Booking[]
+}
+
+model Booking {
+  id         String   @id @default(cuid())
+  amount     Int
+  status     String   @default("PENDING")
+  txRef      String?
+  property   Property @relation(fields: [propertyId], references: [id])
+  propertyId String
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String
 }
 
 model User {
@@ -46,6 +58,7 @@ model User {
   sessions      Session[]
   properties    Property[]
   wallet        Wallet?
+  bookings      Booking[]
 
   @@map("users")
 }
