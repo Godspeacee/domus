@@ -6,11 +6,13 @@ import { useParams } from "next/navigation";
 import { DataList, Grid, Box, Flex } from "@radix-ui/themes";
 import { Property } from "../list/page";
 import DeleteProprtyButton from "./DeletePropertyButton";
+import { useSession } from "next-auth/react";
 
 const PropertyDetailPage = () => {
   const { id } = useParams();
   const [property, setProperty] = useState<Property | null>(null);
-
+  const { data: session } = useSession();
+  const role = session?.user.role;
   useEffect(() => {
     if (!id) return;
     axios
@@ -75,10 +77,12 @@ const PropertyDetailPage = () => {
           </DataList.Item>
           <DataList.Item>
             <DataList.Label minWidth="88px">Created at</DataList.Label>
-            <DataList.Value>{property.createdAt}</DataList.Value>
+            <DataList.Value>
+              {new Date(property.createdAt).toDateString()}
+            </DataList.Value>
           </DataList.Item>
         </DataList.Root>
-        <DeleteProprtyButton propertyId={property.id} />
+        {role === "ADMIN" && <DeleteProprtyButton propertyId={property.id} />}
       </Flex>
     </Box>
   );
