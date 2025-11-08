@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { CldImage } from "next-cloudinary";
 import axios from "axios";
 import { useParams } from "next/navigation";
-import { DataList, Grid, Box, Flex } from "@radix-ui/themes";
+import { DataList, Grid, Box, Flex, Button } from "@radix-ui/themes";
 import { Property } from "../list/page";
 import DeleteProprtyButton from "./DeletePropertyButton";
 import { useSession } from "next-auth/react";
@@ -84,6 +84,7 @@ const PropertyDetailPage = () => {
         </DataList.Root>
         {role === "ADMIN" && <DeleteProprtyButton propertyId={property.id} />}
       </Flex>
+      {role === "AGENT" && <Button>Rented</Button>}
     </Box>
   );
 };

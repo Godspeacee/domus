@@ -1,3 +1,4 @@
+"use client";
 import { Grid, Box, Card, Inset, Flex, Text, Skeleton } from "@radix-ui/themes";
 import { CldImage } from "next-cloudinary";
 import React from "react";
@@ -42,7 +43,7 @@ const LoadingPropertiesPage = () => {
                 </Text>
               </Skeleton>
             </Flex>
-            <BookButton />
+            {/*<BookButton />*/}
           </Card>
         </Box>
       ))}

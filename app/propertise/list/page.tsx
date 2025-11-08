@@ -5,6 +5,7 @@ import { Card, Box, Inset, Text, Flex, Grid } from "@radix-ui/themes";
 import axios from "axios";
 import BookButton from "../BookButton";
 import Link from "@/app/component/Link";
+import PropertyToolBar from "./PropertyToolBar";
 
 export interface Property {
   id: string;
@@ -28,7 +29,8 @@ const PropertiesPage = () => {
 
   return (
     <>
-      <Box>Filter</Box>
+      <PropertyToolBar />
+
       <Grid columns={{ initial: "2", sm: "3", md: "5" }} gap={"3"}>
         {properties.map((property) => (
           <Box maxWidth={"240px"} key={property.id}>
