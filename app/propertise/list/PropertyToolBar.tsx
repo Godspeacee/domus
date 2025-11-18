@@ -1,17 +1,18 @@
-import { Box, Flex, Text } from "@radix-ui/themes";
+import { Box, Flex, Grid, Text } from "@radix-ui/themes";
 import React from "react";
 import PropertyCategoryFilter from "./PropertyCategoryFilter";
+import PropertyStateFilter from "./PropertyStateFilter";
+import PropertySearchBar from "./PropertySearchBar";
 
 const PropertyToolBar = () => {
   return (
     <Flex mb="5" justify={"between"}>
       <Flex gap={"3"}>
-        {" "}
-        <Text> Category</Text>
-        <PropertyCategoryFilter />{" "}
+        <PropertyCategoryFilter />
+        <PropertyStateFilter />
       </Flex>
       <Box>
-        <search>SearchBar</search>
+        <PropertySearchBar />
       </Box>
     </Flex>
   );

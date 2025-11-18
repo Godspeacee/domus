@@ -6,6 +6,7 @@ import axios from "axios";
 import BookButton from "../BookButton";
 import Link from "@/app/component/Link";
 import PropertyToolBar from "./PropertyToolBar";
+import { useSearchParams } from "next/navigation";
 
 export interface Property {
   id: string;
@@ -23,9 +24,13 @@ export interface Property {
 
 const PropertiesPage = () => {
   const [properties, setProperties] = useState<Property[]>([]);
+  const searchParams = useSearchParams();
   useEffect(() => {
-    axios.get("/api/propertise").then((res) => setProperties(res.data));
-  }, []);
+    const params = searchParams.toString();
+    axios
+      .get(`/api/propertise?${params}`)
+      .then((res) => setProperties(res.data));
+  }, [searchParams]);
 
   return (
     <>

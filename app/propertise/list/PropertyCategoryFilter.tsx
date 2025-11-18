@@ -1,10 +1,10 @@
 "Use client";
-import { PropertyCategory } from "@/app/generated/prisma";
+
 import { Select } from "@radix-ui/themes";
 import React from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-const categories: { label: string; value?: PropertyCategory }[] = [
+const categories = [
   { label: "All" },
   { label: "Apartment", value: "APARTMENT" },
   { label: "Airbnb", value: "AIRBNB" },
@@ -12,25 +12,21 @@ const categories: { label: string; value?: PropertyCategory }[] = [
 
 const PropertyCategoryFilter = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
+  const params = useSearchParams();
   const pathname = usePathname();
 
-  const currentStatus = searchParams.get("category") || "ALL";
+  const current = params.get("category") || "";
+  const handleChange = (value: string) => {
+    const newParams = new URLSearchParams(params.toString());
+
+    if (value === "All") newParams.delete("category");
+    else newParams.set("category", value);
+
+    router.push(`${pathname}?${newParams.toString()}`);
+  };
   return (
-    <Select.Root
-      defaultValue={currentStatus}
-      onValueChange={(value) => {
-        const params = new URLSearchParams(searchParams.toString());
-        if (value === "ALL") {
-          params.delete("category");
-        } else {
-          params.set("category", value);
-        }
-        params.set("page", "1");
-        router.push(`${pathname}?${params.toString()}`);
-      }}
-    >
-      <Select.Trigger placeholder={currentStatus} />
+    <Select.Root value={current} onValueChange={handleChange}>
+      <Select.Trigger placeholder="Category" />
       <Select.Content>
         {categories.map((category) => (
           <Select.Item
