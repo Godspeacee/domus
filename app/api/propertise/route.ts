@@ -46,7 +46,9 @@ export async function POST(request:NextRequest){
  
   }
 
-export async function GET(request: Request) {
+
+
+ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
 
   const category = searchParams.get("category");
@@ -58,22 +60,22 @@ export async function GET(request: Request) {
   
   if (category) {
     filters.category = category;
-  }
+ }
 
   if (state) {
-    filters.state = state;
+   filters.state = state;
   }
 
   if (search) {
     filters.OR = [
       { title: { contains: search, mode: "insensitive" } },
       { address: { contains: search, mode: "insensitive" } },
-    ];
+   ];
   }
 
   const properties = await prisma.property.findMany({
-    where:filters,
-    include: { images: true },
+   where:filters,
+   include: { images: true },
   });
   return NextResponse.json(properties);
 }

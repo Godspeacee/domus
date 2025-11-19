@@ -20,6 +20,7 @@ export interface Property {
   area: string;
   address: string;
   createdAt: Date;
+  status: string;
 }
 
 const PropertiesPage = () => {

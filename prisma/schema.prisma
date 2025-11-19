@@ -31,8 +31,14 @@ model Property {
   state       String
   images      Image[]
   agent       User             @relation(fields: [agentId], references: [id])
+  status      PropertyStatus   @default(AVAILABLE)
   bookings    Booking[]
   payments    Payment[]
+}
+
+enum PropertyStatus {
+  AVAILABLE
+  RENTED
 }
 
 model Booking {

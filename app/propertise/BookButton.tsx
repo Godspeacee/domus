@@ -10,6 +10,7 @@ interface BookButtonProps {
     id: string;
     title: string;
     price: number;
+    status: string;
   };
 }
 
@@ -37,7 +38,19 @@ const BookButton = ({ property }: BookButtonProps) => {
     }
   };
 
-  return <Button onClick={handleBooking}>Book Appointment</Button>;
+  const disabled = property.status === "RENTED";
+
+  return (
+    <Button
+      disabled={disabled}
+      onClick={handleBooking}
+      className={`px-3 py-2 rounded text-white w-full ${
+        disabled ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600"
+      }`}
+    >
+      {disabled ? "Not Available" : "Book Now"}
+    </Button>
+  );
 };
 
 export default BookButton;

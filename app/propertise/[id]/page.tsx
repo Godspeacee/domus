@@ -21,6 +21,17 @@ const PropertyDetailPage = () => {
       .catch((err) => console.error(err));
   }, [id]);
 
+  const toggleStatus = async (property: Property) => {
+    const newStatus = property.status === "RENTED" ? "AVAILABLE" : "RENTED";
+
+    const res = await axios.patch(`/api/propertise/${property.id}/status`, {
+      status: newStatus,
+    });
+
+    // Update one object, not an array
+    setProperty(res.data);
+  };
+
   if (!property) return <p>Loading...</p>;
 
   return (
@@ -30,15 +41,23 @@ const PropertyDetailPage = () => {
         gap={"3"}
         className="flex gap-3 overflow-x-auto snap-x snap-mandatory scroll-smooth p-2"
       >
-        {property.images.map((image) => (
-          <CldImage
-            src={image.url}
-            alt={image.url || property.title}
-            width={300}
-            height={300}
-            crop="fill"
-            className="object-cover w-full h-[140px]"
-          />
+        {property.images?.map((image) => (
+          <div className="relative" key={image.url}>
+            {" "}
+            <CldImage
+              src={image.url}
+              alt={image.url || property.title}
+              width={300}
+              height={300}
+              crop="fill"
+              className="object-cover w-full h-[140px]"
+            />
+            {property.status === "RENTED" && (
+              <span className="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 text-sm rounded">
+                RENTED
+              </span>
+            )}
+          </div>
         ))}
       </Grid>
       <Flex direction={"row"}>
@@ -84,7 +103,16 @@ const PropertyDetailPage = () => {
         </DataList.Root>
         {role === "ADMIN" && <DeleteProprtyButton propertyId={property.id} />}
       </Flex>
-      {role === "AGENT" && <Button>Rented</Button>}
+      {role === "AGENT" && (
+        <Button
+          onClick={() => toggleStatus(property)}
+          className="mt-2 bg-black text-white px-2 py-1 rounded"
+        >
+          {property.status === "RENTED"
+            ? "Mark as Available"
+            : "Mark as Rented"}
+        </Button>
+      )}
     </Box>
   );
 };
