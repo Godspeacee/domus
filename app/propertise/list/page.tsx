@@ -33,6 +33,9 @@ const PropertiesPage = () => {
       .then((res) => setProperties(res.data));
   }, [searchParams]);
 
+  if (properties.length === 0)
+    return <Text> No Property found from this state</Text>;
+
   return (
     <>
       <PropertyToolBar />

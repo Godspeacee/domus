@@ -48,7 +48,7 @@ export async function POST(request:NextRequest){
 
 
 
- export async function GET(request: Request) {
+export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
 
   const category = searchParams.get("category");
@@ -78,4 +78,4 @@ export async function POST(request:NextRequest){
    include: { images: true },
   });
   return NextResponse.json(properties);
-}
+} 

@@ -11,9 +11,9 @@ const PropertyToolBar = () => {
         <PropertyCategoryFilter />
         <PropertyStateFilter />
       </Flex>
-      <Box>
+      {/* <Box>
         <PropertySearchBar />
-      </Box>
+      </Box> */}
     </Flex>
   );
 };
