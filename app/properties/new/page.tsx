@@ -53,8 +53,8 @@ const NewPropertyPage = () => {
   const onSubmit = handleSubmit(async (data) => {
     try {
       setSubmitting(true);
-      await axios.post("/api/propertise", data);
-      router.push("/propertise/list");
+      await axios.post("/api/properties", data);
+      router.push("/properties/list");
     } catch (error) {
       console.error(error);
       setError("Failed to create property");

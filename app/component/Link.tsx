@@ -6,7 +6,7 @@ import classNames from "classnames";
 
 interface Props {
   href: string;
-  children?: string[];
+  children: string | React.ReactNode;
 }
 
 const Link = ({ href, children }: Props) => {

@@ -13,6 +13,7 @@ import {
   Text,
 } from "@radix-ui/themes";
 import axios from "axios";
+import { BsHouseAdd } from "react-icons/bs";
 import { useRouter } from "next/navigation";
 
 import { error } from "console";
@@ -23,7 +24,10 @@ const NavBar = () => {
       <Flex justify={"between"}>
         <Flex align={"center"} gap={"3"}>
           {" "}
-          <Link href={"/"}> Logo</Link>
+          <Link href={"/"}>
+            {" "}
+            <BsHouseAdd color="black" />{" "}
+          </Link>
           <NavLinks />
         </Flex>
         <AuthStatus />
@@ -34,7 +38,7 @@ const NavBar = () => {
 
 const NavLinks = () => {
   const links = [
-    { label: "Properties", href: "/propertise/list", key: "propertise" },
+    { label: "Properties", href: "/properties/list", key: "propertise" },
   ];
 
   return (

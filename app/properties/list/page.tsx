@@ -21,20 +21,31 @@ export interface Property {
   address: string;
   createdAt: Date;
   status: string;
+  agentId: string;
 }
 
 const PropertiesPage = () => {
   const [properties, setProperties] = useState<Property[]>([]);
   const searchParams = useSearchParams();
+  const current = searchParams.get("state") || "";
   useEffect(() => {
     const params = searchParams.toString();
     axios
-      .get(`/api/propertise?${params}`)
+      .get(`/api/properties?${params}`)
       .then((res) => setProperties(res.data));
   }, [searchParams]);
 
-  if (properties.length === 0)
-    return <Text> No Property found from this state</Text>;
+  const filtered = properties.filter((p) =>
+    current ? p.state.toLowerCase() === current.toLowerCase() : true
+  );
+  if (filtered.length === 0) {
+    return (
+      <>
+        <PropertyToolBar />
+        <Text size="4">No property from this state yet</Text>
+      </>
+    );
+  }
 
   return (
     <>

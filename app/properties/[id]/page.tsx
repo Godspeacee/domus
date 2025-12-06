@@ -16,7 +16,7 @@ const PropertyDetailPage = () => {
   useEffect(() => {
     if (!id) return;
     axios
-      .get(`/api/propertise/${id}`)
+      .get(`/api/properties/${id}`)
       .then((res) => setProperty(res.data))
       .catch((err) => console.error(err));
   }, [id]);
@@ -103,7 +103,8 @@ const PropertyDetailPage = () => {
         </DataList.Root>
         {role === "ADMIN" && <DeleteProprtyButton propertyId={property.id} />}
       </Flex>
-      {role === "AGENT" && (
+
+      {role === "AGENT" && session?.user.id === property.agentId && (
         <Button
           onClick={() => toggleStatus(property)}
           className="mt-2 bg-black text-white px-2 py-1 rounded"

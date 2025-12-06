@@ -12,7 +12,7 @@ const DeleteProprtyButton = ({ propertyId }: { propertyId: string }) => {
   const deleteIssue = async () => {
     try {
       setIsDeleting(true);
-      await axios.delete("/api/propertise/" + propertyId);
+      await axios.delete("/api/properties/" + propertyId);
       router.push("/propertise");
       router.refresh();
     } catch (error) {
@@ -30,7 +30,7 @@ const DeleteProprtyButton = ({ propertyId }: { propertyId: string }) => {
         <AlertDialog.Content>
           <AlertDialog.Title>Confirm Deletion</AlertDialog.Title>
           <AlertDialog.Description>
-            Are you sure you want to delete this issue? This action cannot be
+            Are you sure you want to delete this Property? This action cannot be
             undone.
           </AlertDialog.Description>
           <Flex mt={"4"} gap={"3"}>
