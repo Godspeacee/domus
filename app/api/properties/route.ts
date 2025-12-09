@@ -7,6 +7,7 @@ import authOptions from "@/app/auth/authOptions";
 
 
 
+
 export async function POST(request:NextRequest){
     try {
        const session = await getServerSession(authOptions)
@@ -79,3 +80,4 @@ export async function GET(request: Request) {
   });
   return NextResponse.json(properties);
 } 
+

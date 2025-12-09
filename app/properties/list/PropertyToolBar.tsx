@@ -3,6 +3,7 @@ import React from "react";
 import PropertyCategoryFilter from "./PropertyCategoryFilter";
 import PropertyStateFilter from "./PropertyStateFilter";
 import PropertySearchBar from "./PropertySearchBar";
+import { Metadata } from "next";
 
 const PropertyToolBar = () => {
   return (

@@ -14,9 +14,7 @@ import {
 } from "@radix-ui/themes";
 import axios from "axios";
 import { BsHouseAdd } from "react-icons/bs";
-import { useRouter } from "next/navigation";
-
-import { error } from "console";
+import Image from "next/image";
 
 const NavBar = () => {
   return (
@@ -26,7 +24,13 @@ const NavBar = () => {
           {" "}
           <Link href={"/"}>
             {" "}
-            <BsHouseAdd color="black" />{" "}
+            <Avatar
+              size={"4"}
+              src="/Domuslogo.png"
+              fallback="T"
+              variant="soft"
+              radius="full"
+            />
           </Link>
           <NavLinks />
         </Flex>
@@ -38,7 +42,7 @@ const NavBar = () => {
 
 const NavLinks = () => {
   const links = [
-    { label: "Properties", href: "/properties/list", key: "propertise" },
+    { label: "Properties", href: "/properties/list", key: "properties" },
   ];
 
   return (
@@ -77,7 +81,7 @@ const AuthStatus = () => {
             </Button>
           )}
           {role === "AGENT" && (
-            <Link href="/propertise/new">Post Property</Link>
+            <Link href="/properties/new">Post Property</Link>
           )}
           <DropdownMenu.Root>
             <DropdownMenu.Trigger>
