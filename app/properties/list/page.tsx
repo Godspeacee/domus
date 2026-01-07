@@ -1,4 +1,3 @@
-// app/properties/list/page.tsx
 import { Metadata } from "next";
 import PropertiesPage from "./PropertiesPage";
 
@@ -10,7 +9,7 @@ export const metadata: Metadata = {
     title: "Domus Website",
     description: "A housing website for both house hunters and agents",
     siteName: "Domus Website",
-   },
+  },
   description: "Browse, pay, explore",
 };
 

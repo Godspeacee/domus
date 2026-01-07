@@ -1,6 +1,4 @@
-// app/properties/list/PropertiesPage.tsx
 "use client";
-
 import React, { useEffect, useState } from "react";
 import { CldImage } from "next-cloudinary";
 import { Card, Box, Inset, Text, Flex, Grid } from "@radix-ui/themes";

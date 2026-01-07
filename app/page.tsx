@@ -28,7 +28,7 @@ export default function Home() {
           </Heading>
           <Heading as="h4" className="my-margin">
             Browse listings, book viewing sessions, compare prices, and move in
-            or stay comfortably all with stress.
+            or stay comfortably, all without stress.
           </Heading>
           <Button>
             <Link href="/properties/list">Go to property</Link>
