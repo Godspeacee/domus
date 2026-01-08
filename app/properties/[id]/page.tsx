@@ -4,7 +4,7 @@ import { CldImage } from "next-cloudinary";
 import axios from "axios";
 import { useParams } from "next/navigation";
 import { DataList, Grid, Box, Flex, Button } from "@radix-ui/themes";
-import { Property } from "../list/page";
+import { Property } from "../list/PropertiesPage";
 import DeleteProprtyButton from "./DeletePropertyButton";
 import { useSession } from "next-auth/react";
 
@@ -24,7 +24,7 @@ const PropertyDetailPage = () => {
   const toggleStatus = async (property: Property) => {
     const newStatus = property.status === "RENTED" ? "AVAILABLE" : "RENTED";
 
-    const res = await axios.patch(`/api/propertise/${property.id}/status`, {
+    const res = await axios.patch(`/api/properties/${property.id}/status`, {
       status: newStatus,
     });
 
