@@ -70,7 +70,7 @@ const PropertiesPage = () => {
 
               <Flex direction={"column"}>
                 <Text size="3" weight="bold">
-                  <Link href={`/propertise/${property.id}`}>
+                  <Link href={`/properties/${property.id}`}>
                     {property.title}
                   </Link>
                 </Text>
