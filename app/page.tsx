@@ -24,7 +24,8 @@ export default function Home() {
         <Box>
           <Heading as="h1" className="text-teal-700">
             {" "}
-            From Long-Term Rentals to Short Getaways - Domus Has You Covered.{" "}
+            From Long-Term Rentals to Short Getaways - Domus Has You
+            Covered.{" "}
           </Heading>
           <Heading as="h4" className="my-margin">
             Browse listings, book viewing sessions, compare prices, and move in
@@ -216,7 +217,7 @@ export default function Home() {
                   </li>
                   <li>
                     Payments go directly to the agent's registered bank account
-                    after Domua 10% fee as been deducted
+                    after Domus 10% fee as been deducted
                   </li>
                 </ul>
               </Box>
@@ -230,7 +231,7 @@ export default function Home() {
                     <Text weight={"medium"}>Report Fraud:</Text>
                   </li>
                   <li>
-                    <Text weight={"medium"}>Parthershipd:</Text>
+                    <Text weight={"medium"}>Partherships:</Text>
                   </li>
                 </ul>
               </Flex>
