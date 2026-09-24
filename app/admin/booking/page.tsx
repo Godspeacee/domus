@@ -1,6 +1,8 @@
 import prisma from "@/prisma/clientfile";
 import { Box, Card, Text, Flex, Avatar } from "@radix-ui/themes";
 
+export const dynamic = "force-dynamic";
+
 const AdminBookingsPage = async () => {
   const bookings = await prisma.payment.findMany({
     include: {
