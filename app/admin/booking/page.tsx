@@ -53,7 +53,7 @@ const AdminBookingsPage = async () => {
                   {booking.createdAt.toLocaleDateString()}
                 </Text>
                 <Avatar
-                  src={booking.property.agent?.image!}
+                  src={booking.property.agent?.image ?? ""}
                   alt="Agent Photo"
                   fallback="?"
                   size={"2"}

@@ -3,8 +3,8 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import authOptions from "@/app/auth/authOptions";
 
-export async function PATCH(req: Request, { params }: any) {
-  const { id } = params;
+export async function PATCH(req: Request, { params }:  { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   const { status } = await req.json(); // "RENTED" or "AVAILABLE"
   const session = await getServerSession(authOptions);
 

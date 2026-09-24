@@ -25,11 +25,13 @@ export async function POST(req: Request) {
     );
 
     return NextResponse.json(response.data);
-  } catch (error: any) {
-    console.error(error.response?.data || error.message);
-    return NextResponse.json(
-      { error: "Failed to initialize payment" },
-      { status: 500 }
-    );
-  }
+  }catch (error: unknown) {
+  const message =
+    error instanceof Error ? error.message : "Internal Server Error";
+
+  return NextResponse.json(
+    { error: message },
+    { status: 500 }
+  );
+}
 }

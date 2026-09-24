@@ -74,7 +74,9 @@ export default function Home() {
                 </Box>
               </Flex>
               <Text>Pay small booking fee to view the property.</Text>
-              <Text>For AIRBNB agents will mark it rented if it's in use.</Text>
+              <Text>
+                For AIRBNB agents will mark it rented if it&apos;s in use.
+              </Text>
             </Card>
           </Box>
           <Box>
@@ -87,7 +89,9 @@ export default function Home() {
                   </Heading>
                 </Box>
               </Flex>
-              <Text>If it's the right fit, pay the landlord directly.</Text>
+              <Text>
+                If it&apos;s the right fit, pay the landlord directly.
+              </Text>
             </Card>
           </Box>
         </Grid>
@@ -216,8 +220,8 @@ export default function Home() {
                     booking reports are verified
                   </li>
                   <li>
-                    Payments go directly to the agent's registered bank account
-                    after Domus 10% fee as been deducted
+                    Payments go directly to the agent&apos;s registered bank
+                    account after Domus 10% fee as been deducted
                   </li>
                 </ul>
               </Box>

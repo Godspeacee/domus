@@ -1,8 +1,9 @@
 import prisma from "@/prisma/clientfile";
 import { NextRequest, NextResponse } from "next/server";
-import {createPropertySchema} from '../../vallidationSchma'
+import { createPropertySchema } from "../../vallidationSchma";
 import { getServerSession } from "next-auth";
 import authOptions from "@/app/auth/authOptions";
+import { Prisma, PropertyCategory } from "@/app/generated/prisma";
 
 
 
@@ -37,15 +38,17 @@ export async function POST(request:NextRequest){
       },
     })
     return NextResponse.json(newProperty,{status:201},   )
-    } catch (error:any) {
-        
-    return NextResponse.json(
-      { error: error.message || "Internal Server Error" },
-      { status: 500 }
-    );
-    }
+    }  catch (error: unknown) {
+  const message =
+    error instanceof Error ? error.message : "Internal Server Error";
+
+  return NextResponse.json(
+    { error: message },
+    { status: 500 }
+  );
+}
  
-  }
+}
 
 
 
@@ -56,12 +59,14 @@ export async function GET(request: Request) {
   const state = searchParams.get("state");
   const search = searchParams.get("search");
 
-  const filters: any = {};
+const filters: Prisma.PropertyWhereInput = {};
 
   
-  if (category) {
-    filters.category = category;
- }
+ if (category) {
+  if (Object.values(PropertyCategory).includes(category as PropertyCategory)) {
+    filters.category = category as PropertyCategory;
+  }
+}
 
   if (state) {
    filters.state = state;
@@ -69,8 +74,8 @@ export async function GET(request: Request) {
 
   if (search) {
     filters.OR = [
-      { title: { contains: search, mode: "insensitive" } },
-      { address: { contains: search, mode: "insensitive" } },
+      { title: { contains: search,} },
+      { address: { contains: search,  } },
    ];
   }
 

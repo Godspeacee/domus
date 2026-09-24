@@ -2,6 +2,7 @@ import prisma from "@/prisma/clientfile";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import { UserRole } from "@/app/generated/prisma";
 
 const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -36,7 +37,7 @@ const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       if (session.user) {
         session.user.id = token.sub ?? "";
-        session.user.role = (token.role as any) ?? "CUSTOMER";
+        session.user.role = (token.role as UserRole) ?? UserRole.CUSTOMER;
         session.user.email = token.email ?? session.user.email;
       }
       return session;
